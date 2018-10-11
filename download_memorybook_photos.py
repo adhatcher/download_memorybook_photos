@@ -4,12 +4,17 @@ This will import a spreadsheet from a google form with a list of players
 and photos that they wish to have included on their photo page, create a folder
 for each team and each player, and download the photos they submitted 
 into their folder.
+#Need to use this
+https://www.flickr.com/services/api/explore/flickr.photos.getInfo
+
 '''
 import requests
+import urllib
 import urllib.request as req
 import os
 import pandas as pd
-from flickrapi import FlickrAPI
+#from flickr_api.api import flickr
+import shutil
 
 
 def open_excel_file(file_name):
@@ -66,12 +71,6 @@ def get_player_data(player, data):
 
 
 
-
-
-
-
-
-
 def get_player_pictures(data):
     """Getting the pictures for the specifid player and putting them in their dirctory"""
     column_count = len(data.columns) - 2
@@ -97,8 +96,10 @@ def download_photos(photo, pname):
                 
     #req.urlretrieve(photo, pname)
 
-    r = requests.get(photo, allow_redirects=True)
-    open(pname, 'wb').write(r.content)
+    file, mime = req.urlretrieve(photo)
+    shutil.copy(file, pname)
+
+
 
 
 
@@ -114,10 +115,9 @@ def auth():
 ###########
 if __name__ == '__main__':
 
-    FLICKR_KEY = 'eeb51de2418ff9a87433da8537af8a62'
-    FLICKR_SECRET = 'ebf1824f3b088c47'
+    
 
-    auth()
+    #auth()
 
 
     PLAYER_FILE = 'photolist.xlsx'
