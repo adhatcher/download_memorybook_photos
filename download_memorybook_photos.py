@@ -5,11 +5,11 @@ and photos that they wish to have included on their photo page, create a folder
 for each team and each player, and download the photos they submitted 
 into their folder.
 '''
-
+import requests
 import urllib.request as req
 import os
 import pandas as pd
-import numpy as np
+from flickrapi import FlickrAPI
 
 
 def open_excel_file(file_name):
@@ -95,21 +95,36 @@ def download_photos(photo, pname):
     """ Download the player files and put them in his folder. """
     print('Downloading {} to {}\n'.format(photo, pname))
                 
-    req.urlretrieve(photo, pname)
+    #req.urlretrieve(photo, pname)
+
+    r = requests.get(photo, allow_redirects=True)
+    open(pname, 'wb').write(r.content)
 
 
 
+def auth():
+    return FlickrAPI(FLICKR_KEY,
+                    FLICKR_SECRET,
+                    format='parsed-json',
+                    store_token=True,
+                    cache=True) 
 
 ##########
 # Main Function
 ###########
 if __name__ == '__main__':
 
+    FLICKR_KEY = 'eeb51de2418ff9a87433da8537af8a62'
+    FLICKR_SECRET = 'ebf1824f3b088c47'
+
+    auth()
+
+
     PLAYER_FILE = 'photolist.xlsx'
 
     #Open the file
     DF = open_excel_file(PLAYER_FILE)
-    BASE_DIRECTORY = "/volumes/WD Elements/Pictures/DeSalesSoccer/2018/memorybook"
+    BASE_DIRECTORY = "/volumes/WD Elements/Pictures/memorybook"
     
     #change to photos directory
     os.chdir(BASE_DIRECTORY)
