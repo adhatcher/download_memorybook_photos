@@ -4,17 +4,14 @@ This will import a spreadsheet from a google form with a list of players
 and photos that they wish to have included on their photo page, create a folder
 for each team and each player, and download the photos they submitted 
 into their folder.
-#Need to use this
-https://www.flickr.com/services/api/explore/flickr.photos.getInfo
-
 '''
+
 import requests
 import urllib
 import urllib.request as req
 import os
 import pandas as pd
-#from flickr_api.api import flickr
-import shutil
+import json
 
 
 def open_excel_file(file_name):
@@ -69,9 +66,7 @@ def get_player_data(player, data):
 
     return player_data
 
-
-
-def get_player_pictures(data):
+def get_player_picture_data(data):
     """Getting the pictures for the specifid player and putting them in their dirctory"""
     column_count = len(data.columns) - 2
     first_col = 1
@@ -88,27 +83,35 @@ def get_player_pictures(data):
     return url_list        
 
 
+def parse_photo_id(photo_url):
+    """Parse the url provided to strip out the photo id"""
+    photo_id = photo_url.split("/")[5]
+    return photo_id
 
 
-def download_photos(photo, pname):
-    """ Download the player files and put them in his folder. """
-    print('Downloading {} to {}\n'.format(photo, pname))
-                
-    #req.urlretrieve(photo, pname)
+def download_photos(url_base, v_photo, pname):
+    """Download the large format of the photo from flick """
+    
+    photo_id = parse_photo_id(v_photo)
+    params = ''
+    
+    url = url_base + photo_id
 
-    file, mime = req.urlretrieve(photo)
-    shutil.copy(file, pname)
+    response = requests.get(url, params=params)
 
+    print('Setting Data')
+    data = response.json()
 
+    print('setting sizes')
+    sizes = data['sizes']
 
+    photo_size_list = sizes['size']
 
+    for item in photo_size_list:
+        if item['label'] == 'Large':
+            print('getting photo', item['source'])
+            req.urlretrieve(item['source'], pname)
 
-def auth():
-    return FlickrAPI(FLICKR_KEY,
-                    FLICKR_SECRET,
-                    format='parsed-json',
-                    store_token=True,
-                    cache=True) 
 
 ##########
 # Main Function
@@ -116,9 +119,13 @@ def auth():
 if __name__ == '__main__':
 
     
-
-    #auth()
-
+    api_key = "fb8553af893844254ecffdd1c43e1b45"
+    auth_token = "72157674425939158-f6ad7c41a8abe02c"
+    api_sig = "c3ca33f9e1c22ba5c4843dc9f52ec08c"
+    URL_BASE = "https://api.flickr.com/services/rest/?method=flickr.photos.getSizes&api_key=" \
+    + api_key  + "&format=json&nojsoncallback=1" \
+    + api_sig + "&photo_id="
+    
 
     PLAYER_FILE = 'photolist.xlsx'
 
@@ -158,7 +165,7 @@ if __name__ == '__main__':
             #get the photos for the player
             player_data = get_player_data(player, team_data)
             
-            photo_list = get_player_pictures(player_data)
+            photo_list = get_player_picture_data(player_data)
 
             #download pictures
             folder_name = team + '/' + player_data['Player_Name'].values[0] 
@@ -168,7 +175,7 @@ if __name__ == '__main__':
             
             for photo in photo_list:
                 photo_name = player_data['Player_Name'].values[0] + '_' + str(photo_count) + '.jpg'
-                download_photos(photo, photo_name)
+                download_photos(URL_BASE, photo, photo_name)
                 photo_count += 1
 
 
