@@ -12,6 +12,7 @@ import urllib.request as req
 import os
 import pandas as pd
 import json
+import password as pwd
 
 
 def open_excel_file(file_name):
@@ -97,18 +98,18 @@ def download_photos(url_base, v_photo, pname):
     
     url = url_base + photo_id
 
+    print('Getting response for', url+photo_id)
     response = requests.get(url, params=params)
 
-    print('Setting Data')
+   
     data = response.json()
 
-    print('setting sizes')
     sizes = data['sizes']
 
     photo_size_list = sizes['size']
 
     for item in photo_size_list:
-        if item['label'] == 'Large':
+        if item['label'] == 'Original':
             print('getting photo', item['source'])
             req.urlretrieve(item['source'], pname)
 
@@ -119,12 +120,10 @@ def download_photos(url_base, v_photo, pname):
 if __name__ == '__main__':
 
     
-    api_key = "fb8553af893844254ecffdd1c43e1b45"
-    auth_token = "72157674425939158-f6ad7c41a8abe02c"
-    api_sig = "c3ca33f9e1c22ba5c4843dc9f52ec08c"
+    api_key = pwd.get_api()
     URL_BASE = "https://api.flickr.com/services/rest/?method=flickr.photos.getSizes&api_key=" \
     + api_key  + "&format=json&nojsoncallback=1" \
-    + api_sig + "&photo_id="
+    + "&photo_id="
     
 
     PLAYER_FILE = 'photolist.xlsx'
