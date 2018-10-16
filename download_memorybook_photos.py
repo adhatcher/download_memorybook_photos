@@ -9,14 +9,17 @@ into their folder.
 import password as pwd
 import download_functions as dlf
 from download_functions import logging
+import urllib.request as req
 import os
-
+import logging
 ##########
 # Main Function
 ###########
 if __name__ == '__main__':
 
 
+
+    log = logging.getLogger(__name__)
 
     logging.basicConfig(level=logging.INFO)
     
@@ -44,8 +47,12 @@ if __name__ == '__main__':
     for team in TEAM_DF:
         print('Running for {}\n'.format(team))
 
-        #Create the directories for the teams
-        dlf.create_team_directory(team, BASE_DIRECTORY)
+        
+        if os.path.isdir(BASE_DIRECTORY + '/' + team):
+            pass
+        else:
+            #Create the directories for the teams
+            dlf.create_team_directory(team, BASE_DIRECTORY)
 
         #create data frame for each team
         team_data = dlf.filter_team_data(team, DF)
@@ -61,6 +68,7 @@ if __name__ == '__main__':
             #if the folder exists, skip it and move on to the next player
            
             if os.path.isdir(BASE_DIRECTORY + '/' + team + '/' + player):
+                log.info('Skipping {}.'.format(player))
                 pass
             else:
                 #Create directory for the individual player
@@ -79,5 +87,11 @@ if __name__ == '__main__':
                 for photo in photo_list:
                     photo_name = player_data['Player_Name'].values[0] + '_' + \
                                 str(photo_count) + '.jpg'
-                    dlf.download_photos(URL_BASE, photo, photo_name)
-                    photo_count += 1
+                    #Check to see if the url is an actual JPG file, or flicker page.
+                    if photo.endswith('.jpg'):
+                        log.info('Downloading jpg for {}'.format(player_data['Player_Name'].values[0]))
+                        req.urlretrieve(photo, photo_name)
+                        photo_count += 1
+                    else:
+                        dlf.download_photos(URL_BASE, photo, photo_name)
+                        photo_count += 1
