@@ -1,0 +1,289 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"FLI",
+				"FlickrAPI"
+			],
+			[
+				"folder",
+				"folder_name"
+			],
+			[
+				"phot",
+				"photo_count"
+			],
+			[
+				"get_l",
+				"get_player_pictures"
+			],
+			[
+				"get_player",
+				"get_player_data"
+			],
+			[
+				"team",
+				"team_rows"
+			],
+			[
+				"get",
+				"get_players"
+			],
+			[
+				"download",
+				"download_photos"
+			],
+			[
+				"ur",
+				"urlretrieve"
+			],
+			[
+				"u",
+				"urlretrieve"
+			],
+			[
+				"create",
+				"create_directory"
+			],
+			[
+				"j",
+				"jquery"
+			],
+			[
+				"ba",
+				"batch_rename"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"Packages/Python/Python.sublime-build",
+					""
+				],
+				[
+					"Packages/Python/Python.sublime-build",
+					"Syntax Check"
+				]
+			],
+			[
+				"Packages/Python/Python.sublime-build",
+				"Syntax Check"
+			]
+		]
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 127.0,
+		"last_filter": "htmlprettify",
+		"selected_items":
+		[
+			[
+				"htmlprettify",
+				"HTMLPrettify"
+			],
+			[
+				"",
+				"Set Syntax: HTML"
+			],
+			[
+				"htm",
+				"Set Syntax: HTML"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"view.run_command(\"htmlprettify\")",
+			"view.run(\"htmlprettify\")",
+			"import urllib2,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d39e33b79698005270310898eea76'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); os.makedirs( ipp ) if not os.path.exists(ipp) else None; urllib2.install_opener( urllib2.build_opener( urllib2.ProxyHandler()) ); by = urllib2.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); open( os.path.join( ipp, pf), 'wb' ).write(by) if dh == h else None; print('Error validating download (got %s instead of %s), please try manual install' % (dh, h) if dh != h else 'Please restart Sublime Text to finish installation')",
+			"import urllib.request,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d39e33b79698005270310898eea76'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/Aaron/Documents/Python Code/download_memorybook_photos/password.py",
+		"/Users/Aaron/Documents/Python Code/download_memorybook_photos/download_memorybook_photos.py",
+		"/Users/Aaron/Documents/Python Code/download_memorybook_photos/test_pull.py",
+		"/Users/Aaron/Documents/Python Code/download_memorybook_photos/.gitignore",
+		"/Users/Aaron/Documents/Python Code/download_memorybook_photos/flickr-account_info.py",
+		"/Volumes/WD Elements/Pictures/memorybook/JV/Tom/Tom_1.html",
+		"/Volumes/WD Elements/Pictures/memorybook/JV/Tom/Tom_1.jpg",
+		"/Users/Aaron/Documents/Python Code/download_memorybook_photos/README.md",
+		"/Users/Aaron/Documents/Python Code/getphotos.py",
+		"/Users/Aaron/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/Users/Aaron/Library/Application Support/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/Users/Aaron/Library/Application Support/Sublime Text 3/Packages/Sublime-HTMLPrettify/HTMLPrettify.sublime-settings",
+		"/Users/Aaron/Library/Application Support/Sublime Text 3/Packages/User/Pylinter.sublime-settings",
+		"/Users/Aaron/Documents/Python Code/network info",
+		"/Users/Aaron/Documents/pytest.py",
+		"/Users/Aaron/Documents/aaronhatcher.com gallery code",
+		"/Users/Aaron/Downloads/wordpress/index.php",
+		"/Users/Aaron/Desktop/test.html",
+		"/Users/Aaron/Library/Mobile Documents/com~apple~ScriptEditor2/Documents/rename files.py",
+		"/Users/Aaron/Downloads/backup.config",
+		"/Users/Aaron/Desktop/Error.html",
+		"/Users/Aaron/Desktop/view.html",
+		"/Users/Aaron/Desktop/Script Error Log.txt",
+		"/Users/Aaron/Desktop/publish.html",
+		"/Users/Aaron/Library/Application Support/Sublime Text 3/Packages/Sublime-HTMLPrettify/error.html",
+		"/Users/Aaron/Desktop/publish.js",
+		"/Users/Aaron/Google Drive/AWS/test.py",
+		"/Users/Aaron/Google Drive/AWS/test.job",
+		"/Users/Aaron/Google Drive/AWS/adhatchers3",
+		"/Users/Aaron/Desktop/Adam.xml",
+		"/Users/Aaron/Documents/Python Code/example table.html",
+		"/Users/Aaron/Library/Mobile Documents/com~apple~TextEdit/Documents/test.html",
+		"/Volumes/Home Directory/Development/Python/Tornado1.py",
+		"/Volumes/Home Directory/Development/Python/weather.py",
+		"/Volumes/Home Directory/Development/Python/number_test.py",
+		"/Volumes/Home Directory/Development/Python/python_games/starpusher.py",
+		"/Volumes/Home Directory/Development/Python/turtle2.py"
+	],
+	"find":
+	{
+		"height": 39.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 24.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 257.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "Packages/Python/Python.sublime-build",
+	"project": "Pipfile.sublime-project",
+	"replace":
+	{
+		"height": 44.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": false,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
