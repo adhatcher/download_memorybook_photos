@@ -46,7 +46,7 @@ def get_players(data_frame, team):
     player_list = data_frame.Player_Name.unique()
 
     return player_list
-
+    
 def create_player_directory(team, player, BASE_DIRECTORY):
     """Create Directories for those players"""
     player_dir = str(team + '/' + str(player))
@@ -63,7 +63,7 @@ def get_player_data(player, data):
 
 def get_player_picture_data(data):
     """Getting the pictures for the specifid player and putting them in their dirctory"""
-    column_count = len(data.columns) - 2
+    column_count = len(data.columns) - 3
     first_col = 1
 
     #list of photos for the player.

@@ -29,12 +29,16 @@ if __name__ == '__main__':
     + "&photo_id="
     
 
-    PLAYER_FILE = 'photolist.xlsx'
+    PLAYER_FILE = "2019 DeSales Memory Book Photos (Responses).xlsx"
+    #'photolist.xlsx'
 
     #Open the file
-    DF = dlf.open_excel_file(PLAYER_FILE)
-    BASE_DIRECTORY = "/volumes/WD Elements/Pictures/memorybook"
+    DF_temp = dlf.open_excel_file(PLAYER_FILE)
+    DF = DF_temp.rename(columns={'Player Name':'Player_Name', 'Player Number':'Player_Number'})
     
+    #BASE_DIRECTORY = "/volumes/WD Elements/Pictures/memorybook"
+    BASE_DIRECTORY = "/volumes/Public/Shared Pictures/memorybook/2019/Player Photos/"
+
     #change to photos directory
     os.chdir(BASE_DIRECTORY)
     
