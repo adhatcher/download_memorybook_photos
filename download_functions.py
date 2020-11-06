@@ -28,7 +28,7 @@ def create_team_directory(team, BASE_DIRECTORY):
     """create a directory for each team.""" 
     try:
         log.info('Creating directory for team {}'.format(team))
-        os.mkdir(BASE_DIRECTORY+'/'+team)
+        os.mkdir(BASE_DIRECTORY+'/' + team + '/Players')
     except:
         pass
 
@@ -49,9 +49,9 @@ def get_players(data_frame, team):
     
 def create_player_directory(team, player, BASE_DIRECTORY):
     """Create Directories for those players"""
-    player_dir = str(team + '/' + str(player))
+    player_dir = str(team + '/Players/' + str(player))
     log.info('Creating directory for {}.'.format(player))
-    os.mkdir(BASE_DIRECTORY + '/' + player_dir)
+    os.mkdir(BASE_DIRECTORY + '/Players/' + player_dir)
 
 
 def get_player_data(player, data):

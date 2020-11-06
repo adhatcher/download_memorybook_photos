@@ -29,16 +29,14 @@ if __name__ == '__main__':
     + "&photo_id="
     
 
-    PLAYER_FILE = "2019 DeSales Memory Book Photos (Responses).xlsx"
+    PLAYER_FILE = "2020 DeSales Memory Book (Responses).xlsx"
     #'photolist.xlsx'
 
     #Open the file
     DF_temp = dlf.open_excel_file(PLAYER_FILE)
     DF = DF_temp.rename(columns={'Player Name':'Player_Name', 'Player Number':'Player_Number'})
     
-    #BASE_DIRECTORY = "/volumes/WD Elements/Pictures/memorybook"
-    BASE_DIRECTORY = "/volumes/Public/Shared Pictures/memorybook/2019/Player Photos/"
-
+    BASE_DIRECTORY = "/volumes/pictures/pictures/memorybook/2020/Photos/Team Pages"
     #change to photos directory
     os.chdir(BASE_DIRECTORY)
     
@@ -52,7 +50,7 @@ if __name__ == '__main__':
         print('Running for {}\n'.format(team))
 
         
-        if os.path.isdir(BASE_DIRECTORY + '/' + team):
+        if os.path.isdir(BASE_DIRECTORY + '/' + team + 'Players'):
             pass
         else:
             #Create the directories for the teams
@@ -71,7 +69,7 @@ if __name__ == '__main__':
             
             #if the folder exists, skip it and move on to the next player
            
-            if os.path.isdir(BASE_DIRECTORY + '/' + team + '/' + player):
+            if os.path.isdir(BASE_DIRECTORY + '/' + team + '/Players/' + player):
                 log.info('Skipping {}.'.format(player))
                 pass
             else:
@@ -84,7 +82,7 @@ if __name__ == '__main__':
                 photo_list = dlf.get_player_picture_data(player_data)
 
                 #download pictures
-                folder_name = team + '/' + player_data['Player_Name'].values[0] 
+                folder_name = team + '/Players/' + player_data['Player_Name'].values[0]
                     
                 os.chdir(BASE_DIRECTORY + '/' + folder_name)
                 
