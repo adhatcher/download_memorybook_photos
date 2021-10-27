@@ -1,3 +1,5 @@
-flickr_account_info.py
-password.py
-*.xlsx
+__pycache__
+__pycache__/*
+.idea
+.idea/*
+.DS_Store
