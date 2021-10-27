@@ -3,7 +3,8 @@ download_memorybook_photos.py application
 
 """
 import os
-import urllib.request as req
+import urllib as req
+from urllib.request import urlretrieve
 import logging
 import requests
 import pandas as pd
@@ -49,9 +50,9 @@ def get_players(data_frame, team):
     
 def create_player_directory(team, player, BASE_DIRECTORY):
     """Create Directories for those players"""
-    player_dir = str(team + '/Players/' + str(player))
+    player_dir = str(team + '/' + str(player))
     log.info('Creating directory for {}.'.format(player))
-    os.mkdir(BASE_DIRECTORY + '/Players/' + player_dir)
+    os.mkdir(BASE_DIRECTORY + '/' + player_dir)
 
 
 def get_player_data(player, data):
@@ -62,7 +63,7 @@ def get_player_data(player, data):
     return player_data
 
 def get_player_picture_data(data):
-    """Getting the pictures for the specifid player and putting them in their dirctory"""
+    """Getting the pictures for the specified player and putting them in their dirctory"""
     column_count = len(data.columns) - 3
     first_col = 1
 
@@ -104,4 +105,4 @@ def download_photos(url_base, v_photo, pname):
     for item in photo_size_list:
         if item['label'] == 'Original':
             log.debug('Retrieving Photo!', item['source'])
-            req.urlretrieve(item['source'], pname)
+            urlretrieve(item['source'], pname)
