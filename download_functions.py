@@ -71,7 +71,7 @@ def get_player_picture_data(data):
     url_list = []
 
     log.info('Downloading Photos for {}.'.format(data['Player_Name'].values[0]))
-    while first_col < column_count:
+    while first_col < column_count + 1:
         col = 'Photo'+str(first_col)
         url_list.append(data[col].values[0])
 
@@ -82,7 +82,19 @@ def get_player_picture_data(data):
 
 def parse_photo_id(photo_url):
     """Parse the url provided to strip out the photo id"""
-    photo_id = photo_url.split("/")[5]
+    log.debug('Parsing:', photo_url)
+    #photo_id = photo_url.split("/")[5]
+
+    if photo_url.count("flic.kr"):
+        photo_url_2 = requests.get(photo_url).url
+    else:
+        photo_url_2 = photo_url
+
+    if photo_url_2.count("aaronhatcher"):
+        photo_id = photo_url_2.split("aaronhatcher/")[1].split("/")[0]
+    else:
+        photo_id = photo_url.split("/")[4]
+
     return photo_id
 
 
