@@ -7,5 +7,6 @@ flickr_account_info.py
 password.py
 membook_venv
 membook_venv/*
+venv/*
 *.pyc
 *.xlsx
