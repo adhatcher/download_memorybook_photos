@@ -5,7 +5,6 @@ __pycache__/*
 .DS_Store
 flickr_account_info.py
 password.py
-*.xlsx
 membook_venv
 membook_venv/*
 *.pyc

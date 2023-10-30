@@ -29,14 +29,14 @@ if __name__ == '__main__':
     + "&photo_id="
     
 
-    PLAYER_FILE = "2021 DeSales Memory Book (Responses).xlsx"
+    PLAYER_FILE = "2023 DeSales Memory Book (Responses).xlsx"
 
 
     #Open the file
     DF_temp = dlf.open_excel_file(PLAYER_FILE)
     DF = DF_temp.rename(columns={'Player Name':'Player_Name', 'Player Number':'Player_Number'})
     
-    BASE_DIRECTORY = "/Users/aaron/Pictures/MemoryBook/2021/Player Pages"
+    BASE_DIRECTORY = "/Users/aaron/Pictures/DeSales Soccer/2023/Memory Book/Player Pages"
     #change to photos directory
     os.chdir(BASE_DIRECTORY)
     
