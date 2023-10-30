@@ -8,3 +8,4 @@ password.py
 membook_venv
 membook_venv/*
 *.pyc
+*.xlsx
